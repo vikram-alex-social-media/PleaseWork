@@ -66,101 +66,10 @@
         <div class="page" id="page-pro">
             
         
-    <br>
-    <br>
-
-    <div id="mydata"></div>
-        
-    <div id="info">
-    <p id="username"></p>
-            
-    <br>
-            
-    <button id="changeusernameshow" onclick="changeusernameshow();">Change Username</button>
-        
-    <br>
-    <br>
-      
-   <p id="newusernametext" style="font-size: 15px; display: none;">New Username</p>
-   <br>
-   <input type="text" id="newusernameid" type="text" name="newusername" value="" style="align-content: center; display: none;">
-   <br>
-   <button id="submitnewusername" style="display: none;" onclick="changeusername();">Submit</button>
-   <br>
-   <br>
-   <img src="close.png" id="newusernameclose" style="height: 5; align-content: center; display: none;">
-
-    <p id="bio"></p>
-    <br>
-        
-    <button id="changeusernameshow" onclick="changeuserbioshow();">Edit Biography</button>
-    <br>
-    <br>
-    <p id="newbio" style="font-size: 15px; display: none;">Edit Bio</p>
-    <br>
-    <br>
-    <input type="text" id="bioid" type="text" name="bio" value="" style="align-content: center; display: none;">
-    <br>
-    <button id="submitnewuserbio" onclick="changeuserbio();" style="display: none;">Submit</button>
-    <br>
-    <br>
-    <img src="close.png" id="newuserbioclose" style="height: 5; display: none;">
-    
+ 
     </div>
     
-        
-    <script>
-        
-        function changeusernameshow() {
-            
-            document.getElementById('newusernametext').style.display = "block";
-            document.getElementById('newusernameid').style.display = "block";
-            document.getElementById('newusernameclose').style.display = "block";
-            document.getElementById('submitnewusername').style.display = "block";
-            
-        }
-        
-        function changeusername() {
-            
-            var newusername = document.getElementById("newusernameid").value;
-            console.log("New Username: " + newusername);
-            
-            document.getElementById('newusernametext').style.display = "none";
-            document.getElementById('newusernameid').style.display = "none";
-            document.getElementById('newusernameclose').style.display = "none";
-            document.getElementById('submitnewusername').style.display = "none";
-            
-            document.getElementById('username').innerHTML = "Username: " + newusername;
-            firebase.database().ref('users/' + userId).update({
-                userId : changedusername
-            });
-            
-        }
-        
-        function changeuserbioshow() {
-            document.getElementById('newbio').style.display = "block";
-            document.getElementById('bioid').style.display = "block";
-            document.getElementById('newuserbioclose').style.display = "block";
-            document.getElementById('submitnewuserbio').style.display = "block";
-        }
-        
-        function changeuserbio() {
-            
-            var newbio = document.getElementById("bioid").value;
-            console.log("New Biography: " + newbio);
-            
-            document.getElementById('newbio').style.display = "none";
-            document.getElementById('bioid').style.display = "none";
-            document.getElementById('newuserbioclose').style.display = "none";
-            document.getElementById('submitnewuserbio').style.display = "none";
-            
-            document.getElementById('bio').innerHTML = "Biography: " + newbio;
-            firebase.database().ref('users/' + userId).update({
-                userBio : changedBio
-            });
-        }
-        
-    </script>
+    
 
         <br>
         <br>
