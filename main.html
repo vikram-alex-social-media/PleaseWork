@@ -13,11 +13,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Nunito+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-
-    <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+    	<script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
 
     <script src="js/script.js"></script>
-
 	<script src="js/modernizr-custom.js"></script>
 </head>
 
@@ -28,7 +26,7 @@
 		<div class="pages-nav__item"><a class="link link--page" href="#page-pro">Profile</a></div>
 		<div class="pages-nav__item"><a class="link link--page" href="#page-collective">Collective Chat</a></div>
 		<div class="pages-nav__item"><a class="link link--page" href="#page-discover">Discover</a></div>
-		<div class="pages-nav__item"><a class="link link--page" href="#page-private">Private Chat</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-private">Private Chat (In Development)</a></div>
 		<div class="pages-nav__item"><a class="link link--page" href="#page-video">Video Chat</a></div>
 		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-about">About</a></div>
 		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
@@ -52,45 +50,33 @@
 		<div class="page" id="page-home">
 			<!-- Blueprint header -->
 
+            
             <h1 class="homeTitle">QuikChat</h1>
             
             <div class="line">__________________________________________________</div>
             
+            <div class="littleDesc"><p>QuikChat was created to enable fast communication in the form of texting and video calls. The entire service is free to use to enjoy. You may navigate our several pages using the icon in the top left corner</p></div>
+            
+       
+            
+            
 		</div>
+        
+        
+        
+        
         
         
 		<!-- homepage -->
         
         <!-- profile -->
         
-        <div class="page" id="page-pro">
-            
-        
- 
-    </div>
-    
-    
-
-        <br>
-        <br>
-        
-        <center>
-    
-        <div class="profilepicture" id="profilepicture"></div>
-            
-        </center>
-
-        <br>
-        <br>
-        
-        </div>
         
 		<div class="page" id="page-pro">
-    <h1 class="bigTitle">Your Profile</h1>
+			<h1 class="bigTitle">Your Profile</h1>
     <h3 class="bigDesc">Edit your profile here to better represent the awesome person you are!</h3>
     <hr class="headerBreak">
 		</div>
-
 
         <!-- profile -->
         
@@ -98,16 +84,41 @@
         
         
 		<div class="page" id="page-collective">
-
 			
    
  			<h1 class="bigTitle">Collective Chat</h1>
     				<h3 class="bigDesc">Enter the QuikChat Collective Chat to interact with the Quikchat by sharing ideas, comments, or anything else</h3>
    		 <hr class="headerBreak">
 		
+            
+            <div id="datetime"></div>
+<center>
+    
 
-   
-                    
+         
+<br>
+ 
+<button id="signin" onclick="signin()">Sign in</button>
+<button id="signout" onclick="signout()">Sign out</button>
+    
+    <form>
+        Tweet Here:
+        <br>
+        <br>
+        <textarea id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
+    </form> 
+    <button type="button" onclick="tweet();">Submit</button>
+    <br>
+    <br>
+    
+    <div id="mytweets"></div>
+    <div id="mydata"></div>
+
+ </center>
+    
+
+            
+            
 		</div>
         
         <!-- collective -->
@@ -116,7 +127,6 @@
         
         
 		<div class="page" id="page-discover">
-
  			<h1 class="bigTitle">Discover</h1>
     				<h3 class="bigDesc">Browse the Discover page to explore what's popular among the QuikChat community</h3>
    		 <hr class="headerBreak">
@@ -140,15 +150,10 @@
         <!-- video chat -->
 
 		<div class="page" id="page-video">
-            
             <body1>
-            
-            <br>
-            <br>
-            <br>
-            
     
    <h1 class="bigTitle">Video Chat</h1>
+    <h3 class="bigDesc">Video Chat allows to interact with friends, family, or anyone else in a more personal manner</h3>
     <hr class="headerBreak">
     
 <input type="hidden" id="input-url" value="URL has been copied!">
@@ -166,13 +171,13 @@
      
    
    
-    </div>
+    
     </body1>
     
 
             
             
-    
+		</div>
         
         <!-- video chat -->
         
@@ -191,13 +196,9 @@
         
         
 		<div class="page" id="page-about">
-        
-        <h1 class="bigTitle">About QuikChat</h1>
-            
+			<h1 class="bigTitle">About QuikChat</h1>
     <h3 class="bigDesc">Learn more about this student-run startup that is on track to drastically improve modern communication</h3>
-            
     <hr class="headerBreak">
-
 		</div>
         
         <!-- about us -->
@@ -206,11 +207,9 @@
         
         
 		<div class="page" id="page-contact">
-
-    <h1 class="bigTitle">Contact Us</h1>
+			<h1 class="bigTitle">Contact Us</h1>
     <h3 class="bigDesc">Feel free to contact QuikChat anytime to discuss suggestions, issues, or anything else </h3>
     <hr class="headerBreak">
-
 		</div>
         
         <!-- contact -->
@@ -219,11 +218,9 @@
         
         
 		<div class="page" id="page-employment">
-
-    <h1 class="bigTitle">Employment</h1>
+			<h1 class="bigTitle">Employment</h1>
     <h3 class="bigDesc">Become part of one of Canada's fastest growing startups and work among other high-achieving, like-minded individuals in an amazing workplace on Toronto's own waterfront</h3>
     <hr class="headerBreak">
-
 		</div>
         
         <!-- employment -->
@@ -238,7 +235,30 @@
 </body>
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 <style>
+    
+    
+    
+    
+    
     
     
 /* HOME PAGE */    
@@ -259,7 +279,7 @@
         color: #272727;
         position: absolute;
         left: 38.25%;
-        top: 20%
+        top: 25%;
     }
     
      .collectiveTitle {
@@ -279,25 +299,15 @@
     }
     
     #signin {
-	   margin-left: 398px;
-       top: 10%;
+        position: absolute;
+	   left: 400px;
+	   top: 400px;
     }
     
     #signout {
-	    margin-left: 532px;
-        top: 10%;
-    }
-    #mytweets {
-    }
-    #inputFileToLoad {
-        margin-left: 75px;
-    }
-    #newusernameclose, #newuserbioclose {
-        height: 10px;
-    }
-    
-    #info {
-        margin-left: 200px;
+        position: absolute;
+	    left: 600px;
+	    top: 400px;
     }
     body1 {
       display: flex;
@@ -317,7 +327,6 @@
         padding: 0;
         border: 3px solid #90ee90;
         box-shadow: rgba(156, 172, 172, 0.2) 0px 2px 2px, rgba(156, 172, 172, 0.2) 0px 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
-	    background: transparent;
     }
       
       
@@ -333,6 +342,7 @@
           top: 19%;
           left: 50%;
       }
+        
     
     }
     .copy {
@@ -369,6 +379,7 @@
           position: absolute;
           z-index: 999;
           text-decoration: none;
+          
       }
       
       .btn:hover, .btn:focus {
@@ -472,7 +483,7 @@ body {
 	font-family: 'Comfortaa', sans-serif;
     margin: 0;
 	color: #272727;
-	background: #90ee90;
+	background: #90d1a7;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -491,22 +502,6 @@ a:hover {
         top: 700px;
         left: 700px;
     }
-    
-.profilepicture {
-    margin-left: 0px;
-    border-radius: 50%;
-    display: block;
-    width: 40%;
-}
-    
-.profileimage {
-    border-radius: 50%;
-    align-content: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-}
     
     
     
@@ -797,6 +792,7 @@ a:hover {
 	position: absolute;
 	z-index: 0;
 	top: 0;
+	opacity: 0;
 }
 /* page content */
 .info {
@@ -854,7 +850,7 @@ a:hover {
 	width: 100%;
 	height: 2px;
 	text-indent: 200%;
-    -webkit-transition: opacity 0.25s;		
+	-webkit-transition: opacity 0.25s;
 	transition: opacity 0.25s;
 }
 .menu-button::before {
@@ -865,8 +861,8 @@ a:hover {
 	-webkit-transform: translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
 	transform: translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
 }
-.menu-button--open span {		
-	opacity: 0;		
+.menu-button--open span {
+	opacity: 0;
 }
 .menu-button--open::before {
 	-webkit-transform: rotate3d(0, 0, 1, 45deg);
@@ -894,7 +890,7 @@ a:hover {
 		min-height: 20px;
 	}
 	.link--page {
-        overflow: hidden;
+		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
@@ -970,9 +966,10 @@ html, body {
     
     </style>    
     
-    
+<script>
+	
+	
 <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-    
 <script>
   // Initialize Firebase
   var config = {
@@ -996,11 +993,6 @@ html, body {
                 name = user.displayName;
                 imageUrl = user.photoURL;
                 email = user.email;
-                document.getElementById('profilepicture').innerHTML = "<img class=profileimage src='" + imageUrl + "'/>";
-                document.getElementById('username').innerHTML = name;
-                document.getElementById("image").src = imageUrl;
-                document.getElementById("email").innerHTML = email;
-                
                     
                 // write user data to users
                 writeUserData(userId, name, email, imageUrl);
@@ -1016,10 +1008,8 @@ html, body {
                 // An error happened.
                 });
                 
-                firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+                firebase.database().ref('/tweets/' + userId).once('value').then(function(snapshot) {
                     var data = (snapshot.val());
-                    dataarray = [data];
-                    users = dataarray[0];
                     if (data == null) {
                       console.log("No data found at /tweets" + userId);  
                     } else {
@@ -1048,13 +1038,10 @@ html, body {
         // write user data
         function writeUserData(userId, name, email, imageUrl) {
             firebase.database().ref('users/' + userId).set({
-                userId : userId,
                 username: name,
                 email: email,
                 profile_picture : imageUrl
-                
             });
-            
         }
            
     
@@ -1073,6 +1060,7 @@ html, body {
         
         // write tweets to firebase
         function tweet() {
+            
             twitdoc = document.getElementById("twit");
             var nameValue = twitdoc.value;
             var js_time = Date.now();
@@ -1088,23 +1076,6 @@ html, body {
                       updatetweets(data);
                     }
                 });
-            
-            for (var u in users) {
-                if (users[u].email == email) {
-                    changedusername = users[u].newusername
-                }
-            }
-            
-            for (var u in users) {
-                if (users[u].email == email) {
-                    updatedbio = users[u].bio
-                }
-            }
-            
-            
-        function ChooseImage() {
-            
-        }
             
             // The unique key stored in tweetid is based on a timestamp, so list items will automatically be ordered chronologically. Because Firebase generates a unique key for each tweet, no write conflicts will occur if multiple users add a post at the same time. https://firebase.google.com/docs/database/admin/save-data
             
@@ -1125,5 +1096,8 @@ html, body {
         }
     
     </script>    
-
+	
+	</script>
+    
+    
 </html>
