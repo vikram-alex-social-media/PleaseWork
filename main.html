@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QuikChat</title>
+	<meta name="description" content="Communicate with friends, family, or anyone else quickly using QuikChat" />
+	<meta name="keywords" content="Quikchat, communicate, talk, video, chat, quick, social media" />
+	<meta name="author" content="RB Technology" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Nunito+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+
+    <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+
+    <script src="js/script.js"></script>
+
+	<script src="js/modernizr-custom.js"></script>
+</head>
+
+<body>
+	<!-- navigation -->
+	<nav class="pages-nav">
+		<div class="pages-nav__item"><a class="link link--page" href="#page-home">Home</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-pro">Profile</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-collective">Collective Chat</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-discover">Discover</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-private">Private Chat</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#page-video">Video Chat</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-about">About</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-contact">Contact</a></div>
+		<div class="pages-nav__item pages-nav__item--small"><a class="link link--page link--faded" href="#page-employment">Employment</a></div>
+		<div class="pages-nav__item pages-nav__item--social">
+			<a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
+		</div>
+	</nav>
+	<!-- /navigation-->
+	<!-- pages stack -->
+	<div class="pages-stack">
+		
+        <!-- homepage -->
+        
+
+        
+        
+		<div class="page" id="page-home">
+			<!-- Blueprint header -->
+
+            <h1 class="homeTitle">QuikChat</h1>
+            
+            <div class="line">__________________________________________________</div>
+            
+		</div>
+        
+        
+		<!-- homepage -->
+        
+        <!-- profile -->
+        
+        <div class="page" id="page-pro">
+            
+        
+    <br>
+    <br>
+
+    <div id="mydata"></div>
+        
+    <div id="info">
+    <p id="username"></p>
+            
+    <br>
+            
+    <button id="changeusernameshow" onclick="changeusernameshow();">Change Username</button>
+        
+    <br>
+    <br>
+      
+   <p id="newusernametext" style="font-size: 15px; display: none;">New Username</p>
+   <br>
+   <input type="text" id="newusernameid" type="text" name="newusername" value="" style="align-content: center; display: none;">
+   <br>
+   <button id="submitnewusername" style="display: none;" onclick="changeusername();">Submit</button>
+   <br>
+   <br>
+   <img src="close.png" id="newusernameclose" style="height: 5; align-content: center; display: none;">
+
+    <p id="bio"></p>
+    <br>
+        
+    <button id="changeusernameshow" onclick="changeuserbioshow();">Edit Biography</button>
+    <br>
+    <br>
+    <p id="newbio" style="font-size: 15px; display: none;">Edit Bio</p>
+    <br>
+    <br>
+    <input type="text" id="bioid" type="text" name="bio" value="" style="align-content: center; display: none;">
+    <br>
+    <button id="submitnewuserbio" onclick="changeuserbio();" style="display: none;">Submit</button>
+    <br>
+    <br>
+    <img src="close.png" id="newuserbioclose" style="height: 5; display: none;">
+    
+    </div>
+    
+        
+    <script>
+        
+        function changeusernameshow() {
+            
+            document.getElementById('newusernametext').style.display = "block";
+            document.getElementById('newusernameid').style.display = "block";
+            document.getElementById('newusernameclose').style.display = "block";
+            document.getElementById('submitnewusername').style.display = "block";
+            
+        }
+        
+        function changeusername() {
+            
+            var newusername = document.getElementById("newusernameid").value;
+            console.log("New Username: " + newusername);
+            
+            document.getElementById('newusernametext').style.display = "none";
+            document.getElementById('newusernameid').style.display = "none";
+            document.getElementById('newusernameclose').style.display = "none";
+            document.getElementById('submitnewusername').style.display = "none";
+            
+            document.getElementById('username').innerHTML = "Username: " + newusername;
+            firebase.database().ref('users/' + userId).update({
+                userId : changedusername
+            });
+            
+        }
+        
+        function changeuserbioshow() {
+            document.getElementById('newbio').style.display = "block";
+            document.getElementById('bioid').style.display = "block";
+            document.getElementById('newuserbioclose').style.display = "block";
+            document.getElementById('submitnewuserbio').style.display = "block";
+        }
+        
+        function changeuserbio() {
+            
+            var newbio = document.getElementById("bioid").value;
+            console.log("New Biography: " + newbio);
+            
+            document.getElementById('newbio').style.display = "none";
+            document.getElementById('bioid').style.display = "none";
+            document.getElementById('newuserbioclose').style.display = "none";
+            document.getElementById('submitnewuserbio').style.display = "none";
+            
+            document.getElementById('bio').innerHTML = "Biography: " + newbio;
+            firebase.database().ref('users/' + userId).update({
+                userBio : changedBio
+            });
+        }
+        
+    </script>
+
+        <br>
+        <br>
+        
+        <center>
+    
+        <div class="profilepicture" id="profilepicture"></div>
+            
+        </center>
+
+        <br>
+        <br>
+        
+        </div>
+        
+		<div class="page" id="page-pro">
+    <h1 class="bigTitle">Your Profile</h1>
+    <h3 class="bigDesc">Edit your profile here to better represent the awesome person you are!</h3>
+    <hr class="headerBreak">
+		</div>
+
+
+        <!-- profile -->
+        
+        <!-- collective -->
+        
+        
+		<div class="page" id="page-collective">
+
+			
+   
+ 			<h1 class="bigTitle">Collective Chat</h1>
+    				<h3 class="bigDesc">Enter the QuikChat Collective Chat to interact with the Quikchat by sharing ideas, comments, or anything else</h3>
+   		 <hr class="headerBreak">
+		
+            
+<br>
+<br>
+    
+<button id="signin" onclick="signin()">Sign in</button> <button id="signout" onclick="signout()">Sign out</button>
+
+<br>
+<br>
+            
+<center>
+    
+    <form>
+        Tweet Here:
+        <br>
+        <br>
+        <center>
+        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+        </center>
+        <br>
+        <textarea id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
+    </form> 
+    <br>
+    <button type="button" onclick="tweet();">Submit</button>
+    
+
+    <div id="mytweets"></div>
+
+ </center>
+    
+
+            
+            
+		</div>
+        
+        <!-- collective -->
+        
+        <!-- discover -->
+        
+        
+		<div class="page" id="page-discover">
+
+ 			<h1 class="bigTitle">Discover</h1>
+    				<h3 class="bigDesc">Browse the Discover page to explore what's popular among the QuikChat community</h3>
+   		 <hr class="headerBreak">
+		</div>
+        
+        <!-- discover -->
+        
+        <!-- private chat -->
+        
+        
+		<div class="page" id="page-private">
+			
+            <h1 class="bigTitle">Private Chat</h1>
+    <h3 class="bigDesc">Private chat allows you to have undisturbed conversiations with friends, family, or anyone else. Note Private Chat is still in development... </h3>
+    <hr class="headerBreak">
+            
+            
+            
+		</div>
+        
+        <!-- video chat -->
+
+		<div class="page" id="page-video">
+            
+            <body1>
+            
+            <br>
+            <br>
+            <br>
+            
+    
+   <h1 class="bigTitle">Video Chat</h1>
+    <hr class="headerBreak">
+    
+<input type="hidden" id="input-url" value="URL has been copied!">
+    <button class="btn fourth posleft">Copy my URL</button>
+
+    <a class="js-emaillink" href="mailto:yourfriendsemail@here.com?&subject=Invite to join my Video Chat on QuikChat.ca&body=Hey Friend,%0d%0a%0d%0aCome and join me on a Video Chat by clicking this link: (Paste your link here!)%0d%0a%0d%0aSee you there!">
+        <button class="btn fourth posright">Send to a friend</button>
+    </a>
+
+  <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  <script src="js/script.js"></script>
+    
+    
+     
+   
+   
+    
+    </body1>
+    
+
+            
+            
+    </div>
+        
+        <!-- video chat -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- about us -->
+        
+        
+		<div class="page" id="page-about">
+        
+        <h1 class="bigTitle">About QuikChat</h1>
+            
+    <h3 class="bigDesc">Learn more about this student-run startup that is on track to drastically improve modern communication</h3>
+            
+    <hr class="headerBreak">
+
+		</div>
+        
+        <!-- about us -->
+        
+        <!-- contact -->
+        
+        
+		<div class="page" id="page-contact">
+
+    <h1 class="bigTitle">Contact Us</h1>
+    <h3 class="bigDesc">Feel free to contact QuikChat anytime to discuss suggestions, issues, or anything else </h3>
+    <hr class="headerBreak">
+
+		</div>
+        
+        <!-- contact -->
+        
+        <!-- employment -->
+        
+        
+		<div class="page" id="page-employment">
+
+    <h1 class="bigTitle">Employment</h1>
+    <h3 class="bigDesc">Become part of one of Canada's fastest growing startups and work among other high-achieving, like-minded individuals in an amazing workplace on Toronto's own waterfront</h3>
+    <hr class="headerBreak">
+
+		</div>
+        
+        <!-- employment -->
+        
+        
+        
+	</div>
+	<!-- /pages-stack -->
+	<button class="menu-button"><span>Menu</span></button>
+	<script src="js/classie.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+    
+<style>
+    
+    
+/* HOME PAGE */    
+    
+    
+    .homeTitle {
+        position: absolute;
+        top: 10%;
+        left: 40%;
+        align-content: center;
+        font-size: 4em;
+        z-index: 999;
+    }
+    
+    div.line {
+        width: 70%;
+        height: 3%;
+        color: #272727;
+        position: absolute;
+        left: 38.25%;
+        top: 20%
+    }
+    
+     .collectiveTitle {
+        position: absolute;
+        top: 10%;
+        left: 34%;
+        align-content: center;
+        font-size: 4em;
+    }
+    
+     .collectiveDesc {
+        position: absolute;
+        top: 20%;
+        left: 33%;
+        align-content: center;
+        font-size: 1em;
+    }
+    
+    #signin {
+	   margin-left: 398px;
+       top: 10%;
+    }
+    
+    #signout {
+	    margin-left: 532px;
+        top: 10%;
+    }
+    #mytweets {
+    }
+    #inputFileToLoad {
+        margin-left: 75px;
+    }
+    #newusernameclose, #newuserbioclose {
+        height: 10px;
+    }
+    
+    #info {
+        margin-left: 200px;
+    }
+    body1 {
+      display: flex;
+      margin: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+          font-size: 1em;
+    }
+      
+    video {
+        width: 40%; 
+        margin: 0 50px;
+        box-sizing: border-box;
+        border-radius: 2em;
+        padding: 0;
+        border: 3px solid #90ee90;
+        box-shadow: rgba(156, 172, 172, 0.2) 0px 2px 2px, rgba(156, 172, 172, 0.2) 0px 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
+	    background: transparent;
+    }
+      
+      
+      
+      #localVideo {
+          position: absolute;
+          top: 19%;
+          left: 3.1%;
+      }
+      
+        #remoteVideo {
+          position: absolute;
+          top: 19%;
+          left: 50%;
+      }
+    
+    }
+    .copy {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6em;
+      color: rgba(0, 0, 0, 0.5);
+    }
+      
+      
+      .btn {
+          box-sizing: border-box;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-color: transparent;
+          border: 2px solid #90ee90;
+          border-radius: 2em;
+          color: #90ee90;
+          cursor: pointer;
+          display: flex;
+          align-self: center;  
+          font-weight: 900;
+          font-size: 1.2em;
+          line-height: 1;
+          font-family: 'Comfortaa', sans-serif;
+          margin: 20px;
+          padding: 0.3em 2.7em;
+          text-decoration: none;
+          text-align: center;
+          font-family: 'Comfortaa', sans-serif;
+          position: absolute;
+          z-index: 999;
+          text-decoration: none;
+      }
+      
+      .btn:hover, .btn:focus {
+          color: #90ee90;
+          outline: 0;
+          text-decoration: none;
+      } 
+      
+      .fourth {
+          border-color: #90ee90;
+          color: #90ee90;
+          background-image: linear-gradient(120deg, #90ee90 50%, transparent 50%);
+          background-position: 100%;
+          background-size: 400%;
+          transition: background 600ms ease-in-out;
+      }
+      
+      .fourth:hover {
+          background-position: 0;
+          color: #f8f7ff;
+      }    
+      
+      .posleft {
+          top: 75%;
+          left: 16.2%;
+      }
+      
+      .posright {
+          top: 75%;
+          left: 62.9%;
+      }
+            
+      /* General headers and descriptors below: */
+    
+    .bigTitle {
+        font-size: 3.2em;
+        font-family: 'Comfortaa', sans-serif;
+        position: absolute;
+        top: 7%;
+        left: 27%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        color: #f8f7ff;
+        font-weight: 600;
+        line-height: 1;
+        margin: 20px;
+        padding: 0.3em 2.4em;
+        text-align: center;
+        background-color: #90ee90;
+        border: 2px solid #90ee90;
+        border-radius: 2em;
+    }
+	
+	.bigDesc {
+        font-size: 1.2em;
+        font-family: 'Comfortaa', sans-serif;
+        position: absolute;
+        top: 7%;
+        left: 68%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        color: #424242;
+        font-weight: 600;
+        line-height: 1;
+        margin: 20px;
+        width: 32%;
+        text-align: left;
+        border: 1px solid #90ee90;
+        border-radius: 20px;
+        padding: 12px 6px;
+    }
+    
+    .headerBreak {
+        width: 80%;
+        margin-top: 10.5%;
+	z-index: 999;
+    }
+    
+   
+    /* General Blueprint Style */
+/* Resets */
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+/* Helper classes */
+.cf:before,
+.cf:after {
+	content: ' ';
+	display: table;
+}
+.cf:after {
+	clear: both;
+}
+/* Main styles */
+ @import url('https://fonts.googleapis.com/css?family=Comfortaa:400,500,600,700|Nunito+Sans:400,600,700,800,900');
+body {
+	font-family: 'Comfortaa', sans-serif;
+    margin: 0;
+	color: #272727;
+	background: #90ee90;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+a {
+	text-decoration: none;
+	color: #5c5edc;
+	outline: none;
+}
+a:hover {
+	color: #fff;
+}
+/* Blueprint header */
+.myP {
+        color: blue;
+        position: absolute;
+        top: 700px;
+        left: 700px;
+    }
+    
+.profilepicture {
+    margin-left: 0px;
+    border-radius: 50%;
+    display: block;
+    width: 40%;
+}
+    
+.profileimage {
+    border-radius: 50%;
+    align-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+    
+    
+    
+    
+.bp-header {
+	padding: 6em 10vw 2em;
+}
+.bp-header__title {
+	font-size: 2.125em;
+	font-weight: 700;
+	line-height: 1.3;
+	margin: 0;
+	letter-spacing: 2px;
+	color: #fff;
+}
+.bp-header__desc {
+	font-size: 0.95em;
+	margin: 0.5em 0 1em;
+	padding: 0;
+}
+.bp-header__present {
+	font-size: 0.85em;
+	font-weight: 700;
+	position: relative;
+	z-index: 100;
+	display: block;
+	padding: 0 0 0.6em 0.1em;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	color: #5c5edc;
+}
+.bp-tooltip:after {
+	font-size: 50%;
+	font-size: 75%;
+	position: relative;
+	top: -8px;
+	left: -12px;
+	width: 30px;
+	height: 30px;
+}
+.bp-tooltip:hover:before {
+	content: attr(data-content);
+	font-size: 110%;
+	font-weight: 700;
+	line-height: 1.2;
+	position: absolute;
+	left: auto;
+	margin-left: 4px;
+	padding: 0.8em 1em;
+	text-align: left;
+	text-indent: 0;
+	letter-spacing: 0;
+	text-transform: none;
+	color: #fff;
+	background: #5c5edc;
+}
+.bp-nav {
+	margin: 0 0 0 -0.75em;
+}
+.bp-nav__item {
+	position: relative;
+	display: inline-block;
+	width: 2.5em;
+	height: 2.5em;
+	margin: 0 0.1em;
+	text-align: left;
+	border-radius: 50%;
+}
+.bp-nav__item > span {
+	display: none;
+}
+.bp-nav__item:hover:before {
+	content: attr(data-info);
+	font-size: 0.85em;
+	font-weight: bold;
+	position: absolute;
+	top: 120%;
+	left: 0;
+	width: 600%;
+	text-align: left;
+	pointer-events: none;
+	color: #595a5f;
+}
+.bp-nav__item:hover {
+	background: #5c5edc;
+}
+.bp-icon:after {
+	font-family: 'Comfortaa', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	text-align: center;
+	text-transform: none;
+	color: #5c5edc;
+	-webkit-font-smoothing: antialiased;
+	speak: none;
+}
+.bp-nav .bp-icon:after {
+	line-height: 2.4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-indent: 0;
+}
+.bp-nav a:hover:after {
+	color: #fff;
+}
+.bp-icon--next:after {
+	content: '\e000';
+}
+.bp-icon--drop:after {
+	content: '\e001';
+}
+.bp-icon--archive:after {
+	content: '\e002';
+}
+.bp-icon--about:after {
+	content: '\e003';
+}
+.bp-icon--prev:after {
+	content: '\e004';
+}
+@media screen and (max-width: 40em) {
+	.bp-header {
+		padding: 50px 20px 1em;
+	}
+	.bp-header__title {
+		font-size: 1.8em;
+	}
+}
+    
+/* stop */
+    
+    
+    html.js,
+.js body {
+	overflow: hidden;
+	height: 100vh;
+}
+/* Pages nav */
+.pages-nav {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+	padding: 20px;
+	text-align: center;
+	background: #0e0f0f;
+}
+.js .pages-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50vh;
+	padding: 30px;
+	pointer-events: none;
+	opacity: 0;
+	background: transparent;
+	-webkit-transition: -webkit-transform 1.2s, opacity 1.2s;
+	transition: transform 1.2s, opacity 1.2s;
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	-webkit-transform: translate3d(0, 150px, 0);
+	transform: translate3d(0, 150px, 0);
+}
+.js .pages-nav--open {
+	pointer-events: auto;
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+.pages-nav__item {
+	width: 33%;
+	padding: 1em;
+}
+.js .pages-nav__item {
+	padding: 0 10%;
+}
+.pages-nav .pages-nav__item--social {
+	width: 100%;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 1.2s, opacity 1.2s;
+	transition: transform 1.2s, opacity 1.2s;
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	-webkit-transform: translate3d(0, 20px, 0);
+	transform: translate3d(0, 20px, 0);
+}
+.pages-nav--open .pages-nav__item--social {
+	opacity: 1;
+	-webkit-transition-delay: 0.35s;
+	transition-delay: 0.35s;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+.link {
+	font-size: 0.85em;
+	font-weight: bold;
+	position: relative;
+	letter-spacing: 1px;
+}
+.link:hover,
+.link:focus {
+	color: #f8f7ff;
+    
+    
+    
+    
+}
+.link--page {
+	display: block;
+	color: #424242;
+}
+.link--page:not(.link--faded)::before {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	width: 30px;
+	height: 2px;
+	margin: 5px 0 0 -15px;
+	background: #f8f7ff;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: scale3d(0, 1, 1);
+	transform: scale3d(0, 1, 1);
+}
+.link--page:hover:before {
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+}
+.link--faded {
+	color: #4f4f64;
+}
+.link--faded:hover,
+.link--faded:focus {
+	color: #5c5edc;
+}
+.link--page.link--faded {
+	font-size: 0.65em;
+}
+.link--social {
+	font-size: 1.5em;
+	margin: 0 0.75em;
+}
+.text-hidden {
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	color: transparent;
+}
+/* Pages stack */
+.js .pages-stack {
+	z-index: 100;
+	pointer-events: none;
+	-webkit-perspective: 1200px;
+	perspective: 1200px;
+	-webkit-perspective-origin: 50% -50%;
+	perspective-origin: 50% -50%;
+}
+.js .page {
+	position: relative;
+	z-index: 5;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	pointer-events: auto;
+	background: #f8f7ff;
+	box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+}
+.js .pages-stack--open .page {
+	cursor: pointer;
+	-webkit-transition: -webkit-transform 0.45s, opacity 0.45s;
+	transition: transform 0.45s, opacity 0.45s;
+	-webkit-transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+	transition-timing-function: cubic-bezier(0.6, 0, 0.4, 1);
+}
+.js .page--inactive {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+}
+/* page content */
+.info {
+	font-size: 1.25em;
+	max-width: 50%;
+	margin-top: 1.5em;
+}
+.poster {
+	position: absolute;
+	bottom: 4vh;
+	left: 60%;
+	max-width: 100%;
+	max-height: 80%;
+}
+/* Menu button */
+.menu-button {
+	position: absolute;
+	z-index: 1000;
+	top: 30px;
+	left: 30px;
+	width: 30px;
+	height: 24px;
+	padding: 0;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: transparent;
+}
+.no-js .menu-button {
+	display: none;
+}
+.menu-button::before,
+.menu-button::after,
+.menu-button span {
+	background: #5f656f;
+}
+.menu-button::before,
+.menu-button::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	pointer-events: none;
+	-webkit-transition: -webkit-transform 0.25s;
+	transition: transform 0.25s;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+}
+.menu-button span {
+	position: absolute;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 2px;
+	text-indent: 200%;
+    -webkit-transition: opacity 0.25s;		
+	transition: opacity 0.25s;
+}
+.menu-button::before {
+	-webkit-transform: translate3d(0, -10px, 0) scale3d(0.8, 1, 1);
+	transform: translate3d(0, -10px, 0) scale3d(0.8, 1, 1);
+}
+.menu-button::after {
+	-webkit-transform: translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
+	transform: translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
+}
+.menu-button--open span {		
+	opacity: 0;		
+}
+.menu-button--open::before {
+	-webkit-transform: rotate3d(0, 0, 1, 45deg);
+	transform: rotate3d(0, 0, 1, 45deg);
+}
+.menu-button--open::after {
+	-webkit-transform: rotate3d(0, 0, 1, -45deg);
+	transform: rotate3d(0, 0, 1, -45deg);
+}
+@media screen and (max-width: 60em) {
+	.info {
+		max-width: 100%;
+	}
+	.poster {
+		position: relative;
+		top: auto;
+		left: auto;
+		display: block;
+		max-width: 100%;
+		max-height: 50vh;
+		margin: 0 0 0 50%;
+	}
+	.pages-nav__item {
+		width: 50%;
+		min-height: 20px;
+	}
+	.link--page {
+        overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.link--social {
+		margin: 0 0.1em;
+	}
+}
+@media screen and (max-width: 40em) {
+	.js .pages-nav {
+		display: block;
+		padding: 10px 20px 0 20px;
+		text-align: left;
+	}
+	.js .pages-nav__item {
+		width: 100%;
+		padding: 4px 0;
+	}
+	.js .pages-nav__item--small {
+		display: inline-block;
+		width: auto;
+		margin-right: 5px;
+	}
+	.pages-nav__item--social {
+		font-size: 0.9em;
+	}
+	.menu-button {
+		top: 15px;
+		right: 10px;
+		left: auto;
+	}
+	.info {
+		font-size: 0.85em;
+	}
+	.poster {
+		margin: 1em;
+	}
+}
+    
+    
+    
+/* video chat time */
+    
+   
+    video {
+        max-width: calc(50% - 100px);
+        margin: 0 50px;
+        box-sizing: border-box;
+        border-radius: 2px;
+        padding: 0;
+        background: white;
+    }
+    
+    .copy {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    font-size: 16px;
+    color: white;
+    }
+    
+    * {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+html, body {
+  min-height: 100%;
+}
+    
+    
+    
+    
+    </style>    
+    
+    
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    
+<script>
+  // Initialize Firebase
+  var config = {
+        apiKey: "AIzaSyCToq81cnSSBKbmXS3cmmgjd7ve9h13gpw",
+        authDomain: "va-social-media.firebaseapp.com",
+        databaseURL: "https://va-social-media.firebaseio.com",
+        projectId: "va-social-media",
+        storageBucket: "va-social-media.appspot.com",
+        messagingSenderId: "211228920799"
+  };
+  firebase.initializeApp(config);
+                
+    
+        // Check to see if you are logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user == null) {
+                alert("Not logged in.");
+                return;
+            } else {
+                userId = user.uid;
+                name = user.displayName;
+                imageUrl = user.photoURL;
+                email = user.email;
+                document.getElementById('profilepicture').innerHTML = "<img class=profileimage src='" + imageUrl + "'/>";
+                document.getElementById('username').innerHTML = name;
+                document.getElementById("image").src = imageUrl;
+                document.getElementById("email").innerHTML = email;
+                
+                    
+                // write user data to users
+                writeUserData(userId, name, email, imageUrl);
+                
+                // write data to document
+                mydiv = document.getElementById("mydata");
+                mydiv.innerHTML = name
+                myphotodiv = document.getElementById("myphoto");
+                myphotodiv.innerHTML = "<img src='" + imageUrl + "'/>";
+                user.sendEmailVerification().then(function() {
+                // Email sent.
+                }).catch(function(error) {
+                // An error happened.
+                });
+                
+                firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+                    var data = (snapshot.val());
+                    dataarray = [data];
+                    users = dataarray[0];
+                    if (data == null) {
+                      console.log("No data found at /tweets" + userId);  
+                    } else {
+                      console.log(data);
+                      /*
+                      console.log(data); 
+                      var mylist = "<ul>";
+                      for (var u in data) {
+                         console.log(data[u]);
+                         for (var t in data[u]) {
+                            console.log(data[u][t].tweet);
+                            mylist = mylist + "<li>" + data[u][t].tweet + "</li>";
+                         } 
+                      }
+                      mylist = mylist + "</ul>";
+                        console.log(mylist);
+                      var mytdiv = document.getElementById("mytweets");
+                      mytdiv.innerHTML = mylist;
+                      */
+                      updatetweets(data);
+                    }
+                });
+            } // end user null check
+        }); // end check auth state
+        
+        // write user data
+        function writeUserData(userId, name, email, imageUrl) {
+            firebase.database().ref('users/' + userId).set({
+                userId : userId,
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+                
+            });
+            
+        }
+           
+    
+        function updatetweets(data) {
+            var mylist = "<ul>";
+            for (var u in data) {
+                var d = new Date(data[u].time);
+                var t = d.toString();
+                mylist = mylist + "<li>" + data[u].tweet + " (" + t + ")</li>";
+            }
+            mylist = mylist + "<ul>";
+            var mytdiv = document.getElementById("mytweets");
+            mytdiv.innerHTML = mylist;
+                
+            }
+        
+        // write tweets to firebase
+        function tweet() {
+            twitdoc = document.getElementById("twit");
+            var nameValue = twitdoc.value;
+            var js_time = Date.now();
+            var tweetid = firebase.database().ref('tweets/' + userId + "/").push({tweet: nameValue, time: js_time});
+            twitdoc.value = "";
+            console.log("tweet written");
+            
+            firebase.database().ref('/tweets/' + userId).once('value').then(function(snapshot) {
+                    var data = (snapshot.val());
+                    if (data == null) {
+                      console.log("No data found at /tweets/" + userId);  
+                    } else {
+                      updatetweets(data);
+                    }
+                });
+            
+            for (var u in users) {
+                if (users[u].email == email) {
+                    changedusername = users[u].newusername
+                }
+            }
+            
+            for (var u in users) {
+                if (users[u].email == email) {
+                    updatedbio = users[u].bio
+                }
+            }
+            
+            
+        function ChooseImage() {
+            
+        }
+            
+            // The unique key stored in tweetid is based on a timestamp, so list items will automatically be ordered chronologically. Because Firebase generates a unique key for each tweet, no write conflicts will occur if multiple users add a post at the same time. https://firebase.google.com/docs/database/admin/save-data
+            
+        }
+        
+        
+        function signin() {
+            console.log("Signing in");
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(function(result) {  
+            });
+        }
+        
+        function signout() {
+            console.log("Signing out");
+            firebase.auth().signOut().then(function() {
+            });
+        }
+    
+    </script>    
+
+</html>
